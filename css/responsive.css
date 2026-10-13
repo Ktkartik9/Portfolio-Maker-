@@ -1,0 +1,126 @@
+/* ==========================================================================
+   RESPONSIVE LAYOUT STYLES - RESPONSIVE.CSS
+   Media Queries & Mobile UI Adaptations
+   ========================================================================== */
+
+/* Laptop & Tablet (Under 1024px) */
+@media (max-width: 1024px) {
+  .builder-workspace {
+    grid-template-columns: 220px 1fr 1fr;
+  }
+
+  .hero-section {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    margin: 0 auto 32px;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-visual-wrap {
+    height: 360px;
+  }
+
+  .tpl-creative-hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .tpl-creative-hero-photo-wrap {
+    margin-top: 24px;
+  }
+}
+
+/* Tablet (Under 768px) */
+@media (max-width: 768px) {
+  /* Landing Header Navigation */
+  .nav-links {
+    display: none;
+  }
+
+  /* Builder Workspace Layout */
+  .builder-workspace {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    position: relative;
+  }
+
+  /* Sidebar Drawer on Mobile */
+  .builder-sidebar {
+    position: absolute;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100%;
+    z-index: 500;
+    transition: left var(--transition-smooth);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .builder-sidebar.is-mobile-open {
+    left: 0;
+  }
+
+  .builder-editor-panel {
+    border-right: none;
+    padding: 20px;
+  }
+
+  .builder-preview-panel {
+    display: none; /* In mobile mode, preview is accessed via fullscreen toggle or device switch */
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .templates-radio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile (Under 480px) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .tpl-minimal-profile-row,
+  .tpl-modern-hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tpl-minimal-contacts,
+  .tpl-modern-contact-bar {
+    justify-content: center;
+  }
+
+  .tpl-minimal-socials,
+  .tpl-modern-socials {
+    justify-content: center;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .toast {
+    min-width: calc(100vw - 32px);
+  }
+}

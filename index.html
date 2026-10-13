@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolia — Build Your Professional Portfolio</title>
+  <meta name="description"
+    content="Create, customize, and showcase your professional developer & designer portfolio in minutes without coding. Free, live preview, export to PDF." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+  <link rel="stylesheet" href="css/templates.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Three.js CDN for 3D Visual Effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Landing Header Nav -->
+  <header class="landing-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-logo-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+        <span>Portfolia</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#templates" class="nav-link">Templates</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="btn btn-outline trigger-login-modal">
+          <i class="fa-regular fa-user"></i> Login
+        </button>
+        <a href="builder.html" class="btn btn-primary">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Create Portfolio
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fa-solid fa-bolt"></i> No Backend • Instant Local Export
+      </div>
+      <h1 class="hero-title">
+        Build a Portfolio That <span class="gradient-text">Gets You Noticed.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Create, customize, and showcase a stunning personal portfolio in minutes. Choose professional SaaS templates,
+        tweak colors, preview live, and export directly to PDF or JSON.
+      </p>
+      <div class="hero-cta-group">
+        <a href="builder.html" class="btn btn-primary" style="padding: 14px 28px; font-size: 1.05rem;">
+          <i class="fa-solid fa-rocket"></i> Start Building Free
+        </a>
+        <a href="#templates" class="btn btn-secondary" style="padding: 14px 24px; font-size: 1.05rem;">
+          <i class="fa-solid fa-eye"></i> Explore Templates
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual-wrap">
+      <canvas id="three-hero-canvas" class="three-canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="section-header">
+      <div class="section-tag">Powerful Capabilities</div>
+      <h2 class="section-title">Everything You Need to Shine</h2>
+      <p class="section-desc">Designed with modern 2026 SaaS patterns so your work stands out to recruiters and clients.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon-box"><i class="fa-solid fa-display"></i></div>
+        <h3>Live Preview</h3>
+        <p>Changes update instantly side-by-side as you type, with zero page reloads or delays.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box"><i class="fa-solid fa-palette"></i></div>
+        <h3>Multiple Templates</h3>
+        <p>Switch between Minimal, Modern, and Creative layouts with a single click while preserving data.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box"><i class="fa-solid fa-sliders"></i></div>
+        <h3>Easy Customization</h3>
+        <p>Customize primary colors, Google Fonts, dark/light modes, border radius, and section spacing.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3>Responsive Design</h3>
+        <p>Built for mobile, tablet, and desktop viewports with built-in device switcher frames.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box"><i class="fa-solid fa-database"></i></div>
+        <h3>Local Storage</h3>
+        <p>Your portfolio data automatically persists locally in your browser so you never lose progress.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
+        <h3>PDF & JSON Export</h3>
+        <p>Print a clean resume/portfolio PDF or export/import full JSON data backups anytime.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box"><i class="fa-solid fa-code-compare"></i></div>
+        <h3>No Coding Required</h3>
+        <p>Fill in intuitive form sections for Skills, Experience, Projects, and Social links effortlessly.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Professional SaaS UI</h3>
+        <p>Crafted with glassmorphic cards, smooth micro-interactions, and high-performance WebGL.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Templates Section -->
+  <section class="templates-section" id="templates">
+    <div class="templates-container">
+      <div class="section-header">
+        <div class="section-tag">Handcrafted Designs</div>
+        <h2 class="section-title">Pick Your Favorite Template</h2>
+        <p class="section-desc">All templates automatically adapt to your custom colors, fonts, and data.</p>
+      </div>
+
+      <div class="templates-showcase-grid">
+        <!-- Minimal Template Card -->
+        <div class="landing-template-card minimal">
+          <div class="template-thumb">
+            <div class="tpl-mockup-screen">
+              <div style="font-weight: 800; font-size: 1.1rem; color: #0f172a;">KARTIK PATEL</div>
+              <div style="font-size: 0.75rem; color: #6366f1; margin-bottom: 12px;">Software Engineer</div>
+              <div style="height: 4px; width: 40%; background: #e2e8f0; margin-bottom: 6px;"></div>
+              <div style="height: 4px; width: 70%; background: #e2e8f0;"></div>
+            </div>
+          </div>
+          <div class="template-card-body">
+            <h3>Minimal Template</h3>
+            <p>Clean white & slate typography focus, corporate style layout, and elegant minimal timelines.</p>
+            <button type="button" class="btn btn-outline full-width use-template-btn" data-template="minimal">
+              Use Minimal Template &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Modern Template Card -->
+        <div class="landing-template-card modern">
+          <div class="template-thumb">
+            <div class="tpl-mockup-screen">
+              <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 10px;">
+                <img src="assets/images/profile.jpg" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover;" alt="Kartik Patel" />
+                <div style="font-weight: 700; font-size: 0.9rem;">Kartik Patel</div>
+              </div>
+              <div
+                style="height: 6px; width: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6); border-radius: 3px;">
+              </div>
+            </div>
+          </div>
+          <div class="template-card-body">
+            <h3>Modern Template</h3>
+            <p>Glassmorphism cards, glowing timeline nodes, gradient badges, and technical tags.</p>
+            <button type="button" class="btn btn-primary full-width use-template-btn" data-template="modern">
+              Use Modern Template &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Creative Template Card -->
+        <div class="landing-template-card creative">
+          <div class="template-thumb">
+            <div class="tpl-mockup-screen" style="background: #090d16; border-color: rgba(139, 92, 246, 0.4);">
+              <div style="font-size: 0.6rem; color: #6366f1; letter-spacing: 1px;">CREATIVE</div>
+              <div
+                style="font-weight: 800; font-size: 1.2rem; background: linear-gradient(135deg, #fff, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                KARTIK PATEL</div>
+            </div>
+          </div>
+          <div class="template-card-body">
+            <h3>Creative Template</h3>
+            <p>High-impact large typography, animated background glows, tilt cards, and bold showcases.</p>
+            <button type="button" class="btn btn-outline full-width use-template-btn" data-template="creative">
+              Use Creative Template &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works-section" id="how-it-works">
+    <div class="section-header">
+      <div class="section-tag">Simple 4-Step Process</div>
+      <h2 class="section-title">How Portfolia Works</h2>
+      <p class="section-desc">Go from zero to a live, production-ready portfolio in under 5 minutes.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <h3>Enter Your Info</h3>
+        <p>Fill out profile details, skills, job history, education, and project links in the intuitive dashboard.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <h3>Choose a Template</h3>
+        <p>Select Minimal, Modern, or Creative layout and see your portfolio format transform dynamically.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <h3>Customize Design</h3>
+        <p>Fine-tune primary colors, Google Fonts, dark/light themes, border radius, and section ordering.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <h3>Publish / Export</h3>
+        <p>Download as PDF using clean print styles or save JSON data backups to share anywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-logo-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <span>Portfolia</span>
+        </a>
+        <p>Empowering developers, designers, and creators to build world-class portfolios without writing code.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#templates">Templates</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="builder.html">Portfolio Builder</a></li>
+          <li><a href="builder.html?demo=true">Load Demo Data</a></li>
+          <li><a href="#templates">Themes & Fonts</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="#"><i class="fa-brands fa-x-twitter"></i> Twitter/X</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; <span id="year">2026</span> Portfolia. Built with HTML5, CSS3, Vanilla JS & Three.js. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Frontend Demo Login Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="close-login-modal">&times;</button>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div class="brand-logo-icon" style="margin: 0 auto 12px; width: 48px; height: 48px; font-size: 1.4rem;">
+          <i class="fa-solid fa-user-lock"></i>
+        </div>
+        <h2 style="font-size: 1.5rem;">Welcome to Portfolia</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Sign in to sync your local workspace demo</p>
+      </div>
+
+      <form id="demo-login-form" style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" value="kt0909@example.com" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" value="••••••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 8px;">
+          <i class="fa-solid fa-right-to-bracket"></i> Continue to Builder
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- App Script -->
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
