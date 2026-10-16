@@ -1,8 +1,3 @@
-/**
- * Storage management module for Portfolia
- * Handles LocalStorage persistence, state auto-save, demo data, and data import/export.
- */
-
 import { generateId, showToast } from './utils.js';
 
 export const STORAGE_KEY = 'portfolia_user_portfolio_v1';
@@ -105,7 +100,7 @@ export const DEFAULT_PORTFOLIO_DATA = {
     youtube: "",
     website: ""
   },
-  template: "modern", // "minimal" | "modern" | "creative"
+  template: "modern",
   theme: {
     primaryColor: "#6366f1",
     accentColor: "#8b5cf6",
@@ -122,19 +117,10 @@ export const DEFAULT_PORTFOLIO_DATA = {
 
 let currentPortfolioData = null;
 
-/**
- * Deep clones data object to prevent reference mutation
- * @param {Object} obj 
- * @returns {Object}
- */
 export function cloneData(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-/**
- * Loads portfolio data from LocalStorage or sets default
- * @returns {Object}
- */
 export function loadPortfolioData() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -165,17 +151,11 @@ export function loadPortfolioData() {
   }
 }
 
-/**
- * Saves portfolio data to LocalStorage
- * @param {Object} data 
- * @param {boolean} notify 
- */
 export function savePortfolioData(data, notify = false) {
   try {
     currentPortfolioData = data;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    
-    // Update auto-save indicator UI if present
+
     const statusEl = document.getElementById('save-status');
     if (statusEl) {
       statusEl.innerHTML = `<i class="fa-solid fa-check text-success"></i> Saved`;
@@ -196,10 +176,6 @@ export function savePortfolioData(data, notify = false) {
   }
 }
 
-/**
- * Gets currently active portfolio data state
- * @returns {Object}
- */
 export function getPortfolioData() {
   if (!currentPortfolioData) {
     return loadPortfolioData();
@@ -207,10 +183,6 @@ export function getPortfolioData() {
   return currentPortfolioData;
 }
 
-/**
- * Reset portfolio data to empty slate
- * @returns {Object}
- */
 export function resetPortfolioData() {
   const emptyState = {
     profile: {
@@ -245,10 +217,6 @@ export function resetPortfolioData() {
   return emptyState;
 }
 
-/**
- * Reset portfolio data to sample demo data
- * @returns {Object}
- */
 export function loadDemoData() {
   const demo = cloneData(DEFAULT_PORTFOLIO_DATA);
   savePortfolioData(demo, true);

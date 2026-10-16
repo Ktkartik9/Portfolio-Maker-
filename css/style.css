@@ -1,26 +1,18 @@
-/* ==========================================================================
-   PORTFOLIA DESIGN SYSTEM - STYLE.CSS
-   Base Resets, Color Tokens, Glassmorphism, Typography, Components & Modals
-   ========================================================================== */
-
 :root {
-  /* Brand Core Palette */
   --primary: #6366f1;
   --primary-hover: #4f46e5;
   --primary-glow: rgba(99, 102, 241, 0.35);
   --accent: #8b5cf6;
   --accent-hover: #7c3aed;
   --accent-glow: rgba(139, 92, 246, 0.35);
-  
-  /* Dark Mode Default Theme Tokens */
+
   --bg-dark: #0b0f19;
   --bg-card-dark: rgba(17, 24, 39, 0.75);
   --bg-input-dark: rgba(31, 41, 55, 0.8);
   --border-dark: rgba(255, 255, 255, 0.12);
   --text-dark: #f9fafb;
   --text-muted-dark: #9ca3af;
-  
-  /* Light Mode Tokens */
+
   --bg-light: #f8fafc;
   --bg-card-light: rgba(255, 255, 255, 0.85);
   --bg-input-light: #ffffff;
@@ -28,18 +20,15 @@
   --text-light: #0f172a;
   --text-muted-light: #64748b;
 
-  /* State Colors */
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
   --color-info: #3b82f6;
 
-  /* Typography */
   --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-heading: 'Outfit', var(--font-family-base);
   --font-family-mono: 'Fira Code', monospace;
 
-  /* Elevation & Blur */
   --blur-glass: blur(16px);
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -52,7 +41,6 @@
   --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Light / Dark Mode Toggle Attribute Overrides */
 [data-theme="light"], body.light-mode {
   --bg-main: var(--bg-light);
   --bg-card: var(--bg-card-light);
@@ -71,7 +59,6 @@
   --text-muted: var(--text-muted-dark);
 }
 
-/* Base Resets */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -94,7 +81,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -113,7 +99,6 @@ body {
   background: var(--primary);
 }
 
-/* Typography Utilities */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-heading);
   font-weight: 700;
@@ -132,7 +117,6 @@ a:hover {
   color: var(--primary-hover);
 }
 
-/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -234,7 +218,6 @@ a:hover {
   cursor: not-allowed;
 }
 
-/* Glassmorphism Card Base */
 .glass-card {
   background: var(--bg-card);
   backdrop-filter: var(--blur-glass);
@@ -250,7 +233,6 @@ a:hover {
   box-shadow: var(--shadow-lg);
 }
 
-/* Toast Notifications */
 .toast-container {
   position: fixed;
   bottom: 24px;
@@ -308,7 +290,6 @@ a:hover {
 }
 .toast-close:hover { color: #ffffff; }
 
-/* Modals */
 .modal-overlay {
   position: fixed;
   top: 0;

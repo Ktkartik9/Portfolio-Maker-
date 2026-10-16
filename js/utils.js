@@ -1,12 +1,3 @@
-/**
- * Utility functions for Portfolia
- */
-
-/**
- * Escapes HTML characters to prevent XSS attacks when inserting dynamic text content
- * @param {string} str 
- * @returns {string}
- */
 export function escapeHTML(str) {
   if (str === null || str === undefined) return '';
   return String(str)
@@ -17,20 +8,10 @@ export function escapeHTML(str) {
     .replace(/'/g, '&#039;');
 }
 
-/**
- * Generates a unique short ID
- * @returns {string}
- */
 export function generateId() {
   return 'id_' + Math.random().toString(36).substring(2, 9) + '_' + Date.now().toString(36);
 }
 
-/**
- * Debounce function to limit frequent function calls
- * @param {Function} fn 
- * @param {number} delay 
- * @returns {Function}
- */
 export function debounce(fn, delay = 300) {
   let timer;
   return function (...args) {
@@ -39,11 +20,6 @@ export function debounce(fn, delay = 300) {
   };
 }
 
-/**
- * Reads a file as Data URL (base64)
- * @param {File} file 
- * @returns {Promise<string>}
- */
 export function readFileAsDataURL(file) {
   return new Promise((resolve, reject) => {
     if (!file) {
@@ -57,13 +33,8 @@ export function readFileAsDataURL(file) {
   });
 }
 
-/**
- * Validates URL format
- * @param {string} url 
- * @returns {boolean}
- */
 export function isValidURL(url) {
-  if (!url || url.trim() === '') return true; // Optional URLs pass if empty
+  if (!url || url.trim() === '') return true;
   try {
     const parsed = new URL(url);
     return parsed.protocol === 'http:' || parsed.protocol === 'https:';
@@ -72,23 +43,12 @@ export function isValidURL(url) {
   }
 }
 
-/**
- * Validates Email format
- * @param {string} email 
- * @returns {boolean}
- */
 export function isValidEmail(email) {
   if (!email || email.trim() === '') return true;
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email.trim());
 }
 
-/**
- * Toast Notification System
- * @param {string} message 
- * @param {'success'|'error'|'info'|'warning'} type 
- * @param {number} duration 
- */
 export function showToast(message, type = 'info', duration = 3000) {
   let container = document.getElementById('toast-container');
   if (!container) {
@@ -100,7 +60,7 @@ export function showToast(message, type = 'info', duration = 3000) {
 
   const toast = document.createElement('div');
   toast.className = `toast toast-${type}`;
-  
+
   const iconMap = {
     success: 'fa-circle-check',
     error: 'fa-circle-xmark',
@@ -116,7 +76,6 @@ export function showToast(message, type = 'info', duration = 3000) {
 
   container.appendChild(toast);
 
-  // Trigger animation
   requestAnimationFrame(() => {
     toast.classList.add('toast-show');
   });

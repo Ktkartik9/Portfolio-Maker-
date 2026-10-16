@@ -1,8 +1,3 @@
-/**
- * Builder Dashboard Module for Portfolia
- * Controls sidebar tabs, form bindings, dynamic list item CRUD, HTML5 Drag & Drop section reordering, image uploads, and live preview hooks.
- */
-
 import { getPortfolioData, savePortfolioData, loadDemoData, resetPortfolioData } from './storage.js';
 import { updateLivePreview } from './preview.js';
 import { generateId, readFileAsDataURL, showToast, debounce } from './utils.js';
@@ -11,9 +6,6 @@ import { setupFormValidation } from './validation.js';
 
 let activeSectionTab = 'profile';
 
-/**
- * Main Builder Initializer
- */
 export function initBuilder() {
   setupSidebarNavigation();
   renderActiveSectionForm();
@@ -21,9 +13,6 @@ export function initBuilder() {
   setupDemoDataButton();
 }
 
-/**
- * Setup sidebar tab switching
- */
 function setupSidebarNavigation() {
   const sidebarLinks = document.querySelectorAll('.sidebar-nav-item');
   sidebarLinks.forEach(link => {
@@ -38,7 +27,6 @@ function setupSidebarNavigation() {
       activeSectionTab = targetSection;
       renderActiveSectionForm();
 
-      // On mobile, close sidebar drawer when item selected
       const sidebar = document.getElementById('builder-sidebar');
       if (sidebar && window.innerWidth <= 768) {
         sidebar.classList.remove('is-mobile-open');
@@ -46,7 +34,6 @@ function setupSidebarNavigation() {
     });
   });
 
-  // Mobile sidebar toggle button
   const toggleBtn = document.getElementById('mobile-sidebar-toggle');
   const sidebar = document.getElementById('builder-sidebar');
   if (toggleBtn && sidebar) {
@@ -56,9 +43,6 @@ function setupSidebarNavigation() {
   }
 }
 
-/**
- * Renders form fields for the currently active tab
- */
 export function renderActiveSectionForm() {
   const formContainer = document.getElementById('editor-form-container');
   if (!formContainer) return;
@@ -110,9 +94,6 @@ export function renderActiveSectionForm() {
   setupFormValidation(formContainer);
 }
 
-/* ==========================================================================
-   1. PROFILE FORM
-   ========================================================================== */
 function renderProfileForm(profile = {}) {
   return `
     <div class="form-section-header">
@@ -194,7 +175,6 @@ function bindProfileEvents() {
     });
   });
 
-  // Photo Upload
   const photoInput = document.getElementById('profile-photo-input');
   if (photoInput) {
     photoInput.addEventListener('change', async (e) => {
@@ -230,9 +210,6 @@ function bindProfileEvents() {
   }
 }
 
-/* ==========================================================================
-   2. SKILLS FORM
-   ========================================================================== */
 function renderSkillsForm(skills = []) {
   return `
     <div class="form-section-header">
@@ -357,7 +334,6 @@ function bindSkillsEvents() {
     });
   }
 
-  // Filter skills search
   const searchInput = document.getElementById('skills-search');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -376,9 +352,6 @@ function bindSkillsEvents() {
   }
 }
 
-/* ==========================================================================
-   3. EDUCATION FORM
-   ========================================================================== */
 function renderEducationForm(education = []) {
   return `
     <div class="form-section-header">
@@ -502,9 +475,6 @@ function bindEducationEvents() {
   }
 }
 
-/* ==========================================================================
-   4. EXPERIENCE FORM
-   ========================================================================== */
 function renderExperienceForm(experience = []) {
   return `
     <div class="form-section-header">
@@ -646,9 +616,6 @@ function bindExperienceEvents() {
   }
 }
 
-/* ==========================================================================
-   5. PROJECTS FORM
-   ========================================================================== */
 function renderProjectsForm(projects = []) {
   return `
     <div class="form-section-header">
@@ -814,9 +781,6 @@ function bindProjectsEvents() {
   }
 }
 
-/* ==========================================================================
-   6. CERTIFICATIONS FORM
-   ========================================================================== */
 function renderCertificationsForm(certifications = []) {
   return `
     <div class="form-section-header">
@@ -934,9 +898,6 @@ function bindCertificationsEvents() {
   }
 }
 
-/* ==========================================================================
-   7. SOCIAL LINKS FORM
-   ========================================================================== */
 function renderSocialForm(social = {}) {
   return `
     <div class="form-section-header">
@@ -1002,9 +963,6 @@ function bindSocialEvents() {
   });
 }
 
-/* ==========================================================================
-   8. THEME & APPEARANCE FORM
-   ========================================================================== */
 function renderThemeForm(data) {
   const theme = data.theme || {};
   const template = data.template || 'modern';
@@ -1016,7 +974,7 @@ function renderThemeForm(data) {
     </div>
 
     <div class="theme-customizer-grid">
-      <!-- Template Selector -->
+
       <div class="theme-card-block full-width">
         <label class="theme-block-label"><i class="fa-solid fa-layer-group"></i> Portfolio Template</label>
         <div class="templates-radio-grid">
@@ -1052,7 +1010,6 @@ function renderThemeForm(data) {
         </div>
       </div>
 
-      <!-- Color Palettes -->
       <div class="theme-card-block">
         <label class="theme-block-label"><i class="fa-solid fa-swatchbook"></i> Color Scheme</label>
         <div class="color-presets-list">
@@ -1081,7 +1038,6 @@ function renderThemeForm(data) {
         </div>
       </div>
 
-      <!-- Typography -->
       <div class="theme-card-block">
         <label class="theme-block-label"><i class="fa-solid fa-font"></i> Google Font</label>
         <select id="fontFamilySelect" class="form-select">
@@ -1098,7 +1054,6 @@ function renderThemeForm(data) {
         </div>
       </div>
 
-      <!-- Layout Controls -->
       <div class="theme-card-block full-width">
         <label class="theme-block-label"><i class="fa-solid fa-sliders"></i> Layout & Cards</label>
         <div class="form-grid">
@@ -1136,7 +1091,6 @@ function renderThemeForm(data) {
 function bindThemeEvents() {
   const data = getPortfolioData();
 
-  // Template select
   const tplRadios = document.querySelectorAll('input[name="template-select"]');
   tplRadios.forEach(radio => {
     radio.addEventListener('change', (e) => {
@@ -1148,7 +1102,6 @@ function bindThemeEvents() {
     });
   });
 
-  // Presets
   const presetBtns = document.querySelectorAll('.preset-btn');
   presetBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1167,7 +1120,6 @@ function bindThemeEvents() {
     });
   });
 
-  // Custom Colors
   const pPicker = document.getElementById('primaryColorPicker');
   const pText = document.getElementById('primaryColorText');
   const aPicker = document.getElementById('accentColorPicker');
@@ -1203,7 +1155,6 @@ function bindThemeEvents() {
     });
   }
 
-  // Font
   const fontSelect = document.getElementById('fontFamilySelect');
   if (fontSelect) {
     fontSelect.addEventListener('change', (e) => {
@@ -1213,7 +1164,6 @@ function bindThemeEvents() {
     });
   }
 
-  // Mode
   const modeBtns = document.querySelectorAll('.segment-btn');
   modeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1225,7 +1175,6 @@ function bindThemeEvents() {
     });
   });
 
-  // Radius & Spacing
   const radiusRange = document.getElementById('borderRadiusRange');
   const spacingRange = document.getElementById('sectionSpacingRange');
   const cardStyleSelect = document.getElementById('cardStyleSelect');
@@ -1259,9 +1208,6 @@ function bindThemeEvents() {
   }
 }
 
-/* ==========================================================================
-   9. SECTION ORDER (DRAG & DROP) FORM
-   ========================================================================== */
 function renderSectionOrderForm(order = []) {
   const labelMap = {
     profile: { title: 'About / Bio', icon: 'fa-user' },
@@ -1356,7 +1302,6 @@ function bindSectionOrderEvents() {
       }
     });
 
-    // Arrow controls
     const upBtn = item.querySelector('.move-up-btn');
     const downBtn = item.querySelector('.move-down-btn');
 
@@ -1393,9 +1338,6 @@ function saveNewOrderFromDOM() {
   updateLivePreview();
 }
 
-/**
- * Setup indicator for auto saving
- */
 function setupAutoSaveHooks() {
   const indicator = document.getElementById('save-status');
   if (indicator) {
@@ -1403,9 +1345,6 @@ function setupAutoSaveHooks() {
   }
 }
 
-/**
- * Demo Data loading action button
- */
 function setupDemoDataButton() {
   const demoBtn = document.getElementById('load-demo-btn');
   if (demoBtn) {

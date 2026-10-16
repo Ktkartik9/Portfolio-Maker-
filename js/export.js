@@ -1,23 +1,15 @@
-/**
- * Export & Import Module for Portfolia
- * Handles JSON file download, JSON import validation, and window.print PDF rendering.
- */
-
 import { getPortfolioData, savePortfolioData } from './storage.js';
 import { showToast } from './utils.js';
 import { updateLivePreview } from './preview.js';
 import { renderActiveSectionForm } from './builder.js';
 
-/**
- * Exports portfolio state as a JSON file download
- */
 export function exportPortfolioJSON() {
   try {
     const data = getPortfolioData();
     const jsonStr = JSON.stringify(data, null, 2);
     const blob = new Blob([jsonStr], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    
+
     const a = document.createElement('a');
     a.href = url;
     a.download = `portfolio-data-${Date.now()}.json`;
@@ -33,10 +25,6 @@ export function exportPortfolioJSON() {
   }
 }
 
-/**
- * Imports portfolio JSON file
- * @param {File} file 
- */
 export function importPortfolioJSON(file) {
   if (!file) return;
 
@@ -44,8 +32,7 @@ export function importPortfolioJSON(file) {
   reader.onload = (e) => {
     try {
       const parsed = JSON.parse(e.target.result);
-      
-      // Basic structure validation
+
       if (typeof parsed !== 'object' || parsed === null) {
         throw new Error('Invalid JSON format');
       }
@@ -65,21 +52,14 @@ export function importPortfolioJSON(file) {
   reader.readAsText(file);
 }
 
-/**
- * Triggers Browser Print / PDF Export
- */
 export function printPortfolio() {
-  // Save state before printing
+
   const data = getPortfolioData();
   savePortfolioData(data);
-  
-  // Trigger native print dialog
+
   window.print();
 }
 
-/**
- * Setup export button event bindings
- */
 export function initExportHandlers() {
   const exportBtn = document.getElementById('export-json-btn');
   if (exportBtn) {
@@ -92,7 +72,7 @@ export function initExportHandlers() {
       const file = e.target.files[0];
       if (file) {
         importPortfolioJSON(file);
-        // Reset file input so re-uploading same file triggers change
+
         importInput.value = '';
       }
     });

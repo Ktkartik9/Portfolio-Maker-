@@ -1,8 +1,3 @@
-/**
- * App Module for Portfolia
- * Application initialization, router detection, 3D Canvas visual effects (Three.js), and global UI events.
- */
-
 import { loadPortfolioData } from './storage.js';
 import { initBuilder } from './builder.js';
 import { initPreview, setDeviceMode, openFullscreenPreview } from './preview.js';
@@ -20,18 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/**
- * Landing Page Initializer
- */
 function initLandingPage() {
   initThreeJSBackground();
   initLandingModals();
   initTemplateShowcase();
 }
 
-/**
- * Three.js Subtle 3D Geometric Background Animation for Landing Page
- */
 function initThreeJSBackground() {
   const canvas = document.getElementById('three-hero-canvas');
   if (!canvas) return;
@@ -49,7 +38,6 @@ function initThreeJSBackground() {
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Create glowing 3D Torus Knot & Particle Field
     const geometry = new THREE.TorusKnotGeometry(1.6, 0.45, 120, 16);
     const material = new THREE.MeshBasicMaterial({
       color: 0x6366f1,
@@ -61,7 +49,6 @@ function initThreeJSBackground() {
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    // Particle Swarm
     const particleGeo = new THREE.BufferGeometry();
     const particleCount = 350;
     const posArray = new Float32Array(particleCount * 3);
@@ -82,7 +69,6 @@ function initThreeJSBackground() {
 
     camera.position.z = 4.8;
 
-    // Mouse tilt tracking
     let mouseX = 0;
     let mouseY = 0;
     window.addEventListener('mousemove', (e) => {
@@ -90,7 +76,6 @@ function initThreeJSBackground() {
       mouseY = (e.clientY / window.innerHeight) - 0.5;
     });
 
-    // Animation Loop
     function animate() {
       requestAnimationFrame(animate);
 
@@ -106,7 +91,6 @@ function initThreeJSBackground() {
     }
     animate();
 
-    // Window Resize Handler
     window.addEventListener('resize', () => {
       if (!canvas) return;
       camera.aspect = canvas.clientWidth / canvas.clientHeight;
@@ -118,9 +102,6 @@ function initThreeJSBackground() {
   }
 }
 
-/**
- * Landing Page Frontend Modals (Login UI Demo)
- */
 function initLandingModals() {
   const loginBtns = document.querySelectorAll('.trigger-login-modal');
   const modal = document.getElementById('login-modal');
@@ -150,9 +131,6 @@ function initLandingModals() {
   }
 }
 
-/**
- * Template Selection Buttons on Landing Page
- */
 function initTemplateShowcase() {
   const tplBtns = document.querySelectorAll('.use-template-btn');
   tplBtns.forEach(btn => {
@@ -166,16 +144,12 @@ function initTemplateShowcase() {
   });
 }
 
-/**
- * Builder Dashboard Initializer
- */
 function initBuilderPage() {
   loadPortfolioData();
   initBuilder();
   initPreview();
   initExportHandlers();
 
-  // Device switcher binding
   const deviceBtns = document.querySelectorAll('.device-btn');
   deviceBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -188,6 +162,5 @@ function initBuilderPage() {
     });
   });
 
-  // Global Theme listener
   initThemeListener();
 }

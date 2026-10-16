@@ -1,8 +1,3 @@
-/* ==========================================================================
-   BUILDER DASHBOARD STYLES - BUILDER.CSS
-   SaaS Dashboard Layout, Header Controls, Sidebar, Form Controls, Drag & Drop, Live Preview Frames
-   ========================================================================== */
-
 #builder-root {
   display: flex;
   flex-direction: column;
@@ -11,7 +6,6 @@
   background-color: var(--bg-main);
 }
 
-/* Builder Top Navigation Bar */
 .builder-header {
   height: 64px;
   background: rgba(17, 24, 39, 0.95);
@@ -47,7 +41,6 @@
   gap: 16px;
 }
 
-/* Save Status Indicator */
 .save-status-indicator {
   display: flex;
   align-items: center;
@@ -63,7 +56,6 @@
 .text-success { color: var(--color-success); }
 .status-saving { opacity: 0.6; }
 
-/* Device Frame Switcher */
 .device-switcher {
   display: flex;
   align-items: center;
@@ -101,7 +93,6 @@
   gap: 10px;
 }
 
-/* Builder Main Workspace Grid */
 .builder-workspace {
   display: grid;
   grid-template-columns: 260px 1fr 1fr;
@@ -110,7 +101,6 @@
   height: calc(100vh - 64px);
 }
 
-/* Sidebar Navigation */
 .builder-sidebar {
   background: rgba(15, 23, 42, 0.8);
   border-right: 1px solid var(--border-color);
@@ -166,7 +156,6 @@
   color: var(--primary);
 }
 
-/* Main Editor Panel */
 .builder-editor-panel {
   background: var(--bg-main);
   border-right: 1px solid var(--border-color);
@@ -200,7 +189,6 @@
   margin-top: 4px;
 }
 
-/* Form Fields Styling */
 .builder-form {
   display: flex;
   flex-direction: column;
@@ -273,7 +261,6 @@ input.input-error, textarea.input-error {
   color: var(--text-muted);
 }
 
-/* Photo Upload Row */
 .photo-upload-row {
   display: flex;
   align-items: center;
@@ -312,7 +299,6 @@ input.input-error, textarea.input-error {
   gap: 8px;
 }
 
-/* Dynamic Item Cards (Skills, Education, Experience, Projects) */
 .items-cards-list {
   display: flex;
   flex-direction: column;
@@ -352,7 +338,6 @@ input.input-error, textarea.input-error {
   color: var(--primary);
 }
 
-/* Checkbox Labels */
 .checkbox-label {
   display: inline-flex;
   align-items: center;
@@ -369,7 +354,6 @@ input.input-error, textarea.input-error {
   cursor: pointer;
 }
 
-/* Empty State Component */
 .empty-state {
   text-align: center;
   padding: 48px 24px;
@@ -394,7 +378,6 @@ input.input-error, textarea.input-error {
   font-size: 0.88rem;
 }
 
-/* Section Order Drag & Drop Styling */
 .section-order-container {
   display: flex;
   flex-direction: column;
@@ -446,7 +429,6 @@ input.input-error, textarea.input-error {
   gap: 6px;
 }
 
-/* Theme Customizer Layout */
 .theme-customizer-grid {
   display: flex;
   flex-direction: column;
@@ -507,7 +489,6 @@ input.input-error, textarea.input-error {
 .tpl-choice-name { font-weight: 700; font-size: 0.95rem; }
 .tpl-choice-desc { font-size: 0.76rem; color: var(--text-muted); }
 
-/* Color Swatch Presets */
 .color-presets-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -552,7 +533,6 @@ input.input-error, textarea.input-error {
   cursor: pointer;
 }
 
-/* Segmented Control for Light/Dark Mode */
 .segmented-control {
   display: flex;
   background: rgba(0, 0, 0, 0.3);
@@ -583,7 +563,6 @@ input.input-error, textarea.input-error {
   color: #ffffff;
 }
 
-/* Live Preview Column & Device Frames */
 .builder-preview-panel {
   background: #090d16;
   overflow: hidden;
@@ -633,7 +612,6 @@ input.input-error, textarea.input-error {
   box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
-/* Fullscreen Preview Modal */
 .fullscreen-modal {
   position: fixed;
   top: 0;

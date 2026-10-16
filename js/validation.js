@@ -1,15 +1,5 @@
-/**
- * Form Validation Module for Portfolia
- */
-
 import { isValidEmail, isValidURL } from './utils.js';
 
-/**
- * Validates a single input element and displays inline error message
- * @param {HTMLInputElement|HTMLTextAreaElement} inputEl 
- * @param {Object} rules - { required: boolean, email: boolean, url: boolean, custom: function }
- * @returns {boolean}
- */
 export function validateInput(inputEl, rules = {}) {
   if (!inputEl) return true;
 
@@ -29,7 +19,6 @@ export function validateInput(inputEl, rules = {}) {
     }
   }
 
-  // Look for error message container or create one
   let errorContainer = inputEl.parentElement.querySelector('.field-error-msg');
   if (errorMsg) {
     inputEl.classList.add('input-error');
@@ -49,10 +38,6 @@ export function validateInput(inputEl, rules = {}) {
   }
 }
 
-/**
- * Attaches real-time validation listeners to form elements
- * @param {HTMLFormElement|HTMLElement} container 
- */
 export function setupFormValidation(container) {
   if (!container) return;
 
@@ -62,7 +47,7 @@ export function setupFormValidation(container) {
       const isReq = input.hasAttribute('required');
       const isEmail = input.type === 'email' || input.dataset.validate === 'email';
       const isUrl = input.type === 'url' || input.dataset.validate === 'url';
-      
+
       validateInput(input, {
         required: isReq,
         email: isEmail,
@@ -75,7 +60,7 @@ export function setupFormValidation(container) {
         const isReq = input.hasAttribute('required');
         const isEmail = input.type === 'email' || input.dataset.validate === 'email';
         const isUrl = input.type === 'url' || input.dataset.validate === 'url';
-        
+
         validateInput(input, {
           required: isReq,
           email: isEmail,

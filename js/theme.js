@@ -1,8 +1,3 @@
-/**
- * Theme & Customization Module for Portfolia
- * Controls color palettes, Google fonts, dark/light mode, border-radius, section spacing, and card styling.
- */
-
 export const GOOGLE_FONTS = [
   { name: "Inter", family: "'Inter', sans-serif", link: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" },
   { name: "Outfit", family: "'Outfit', sans-serif", link: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" },
@@ -21,10 +16,6 @@ export const COLOR_PRESETS = [
   { name: "Amber Flame", primary: "#f59e0b", accent: "#ef4444" }
 ];
 
-/**
- * Dynamically loads Google Font stylesheet link if not already loaded
- * @param {string} fontLink 
- */
 export function loadGoogleFont(fontLink) {
   if (!fontLink) return;
   const existing = document.querySelector(`link[href="${fontLink}"]`);
@@ -36,11 +27,6 @@ export function loadGoogleFont(fontLink) {
   }
 }
 
-/**
- * Applies custom theme variables to the document or target preview container
- * @param {Object} theme 
- * @param {HTMLElement} [targetEl] 
- */
 export function applyTheme(theme, targetEl = document.documentElement) {
   if (!theme) return;
 
@@ -49,22 +35,19 @@ export function applyTheme(theme, targetEl = document.documentElement) {
     loadGoogleFont(fontObj.link);
   }
 
-  // Determine light/dark/auto mode
   let isDark = theme.mode === 'dark';
   if (theme.mode === 'auto') {
     isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
   const root = targetEl;
-  
-  // Custom variables
+
   root.style.setProperty('--theme-primary', theme.primaryColor || '#6366f1');
   root.style.setProperty('--theme-accent', theme.accentColor || '#8b5cf6');
   root.style.setProperty('--theme-font', theme.fontFamily || "'Inter', sans-serif");
   root.style.setProperty('--theme-radius', theme.borderRadius || '12px');
   root.style.setProperty('--theme-spacing', theme.sectionSpacing || '48px');
 
-  // Background and Text colors based on mode or user override
   if (isDark) {
     root.setAttribute('data-mode', 'dark');
     root.style.setProperty('--theme-bg', theme.backgroundColor && theme.backgroundColor !== '#ffffff' ? theme.backgroundColor : '#0f172a');
@@ -81,16 +64,12 @@ export function applyTheme(theme, targetEl = document.documentElement) {
     root.style.setProperty('--theme-text-muted', '#64748b');
   }
 
-  // Card style class mapping
   if (targetEl) {
     targetEl.classList.remove('card-style-glass', 'card-style-flat', 'card-style-outlined', 'card-style-elevated');
     targetEl.classList.add(`card-style-${theme.cardStyle || 'glass'}`);
   }
 }
 
-/**
- * Initializes light/dark global theme listener
- */
 export function initThemeListener(onModeChange) {
   if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {

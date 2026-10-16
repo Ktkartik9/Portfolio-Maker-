@@ -1,21 +1,8 @@
-/**
- * Templates Module for Portfolia
- * Generates dynamic portfolio markup for 3 distinct styles:
- * 1. Minimal
- * 2. Modern
- * 3. Creative
- */
-
 import { escapeHTML } from './utils.js';
 
-/**
- * Main Template Renderer
- * @param {Object} data - Portfolio data state
- * @returns {string} HTML string of the generated portfolio
- */
 export function renderPortfolio(data) {
   if (!data) return '<div class="preview-empty">No portfolio data available</div>';
-  
+
   const templateName = data.template || 'modern';
 
   switch (templateName) {
@@ -29,9 +16,6 @@ export function renderPortfolio(data) {
   }
 }
 
-/**
- * Helper to render section blocks based on user drag-and-drop order
- */
 function renderOrderedSections(data, sectionRenderers) {
   const order = data.sectionOrder || ["profile", "skills", "experience", "projects", "education", "certifications"];
   return order
@@ -42,10 +26,6 @@ function renderOrderedSections(data, sectionRenderers) {
     .join('');
 }
 
-/* ==========================================================================
-   TEMPLATE 1: MINIMAL
-   Clean, corporate, typography-focused, elegant minimal spacing
-   ========================================================================== */
 function renderMinimalTemplate(data) {
   const p = data.profile || {};
   const social = data.social || {};
@@ -213,10 +193,6 @@ function renderMinimalTemplate(data) {
   `;
 }
 
-/* ==========================================================================
-   TEMPLATE 2: MODERN
-   Glassmorphism cards, glowing timeline nodes, gradient badges, tech tags
-   ========================================================================== */
 function renderModernTemplate(data) {
   const p = data.profile || {};
   const social = data.social || {};
@@ -234,7 +210,6 @@ function renderModernTemplate(data) {
       const skills = d.skills || [];
       if (skills.length === 0) return '';
 
-      // Group skills by category if available
       const categories = {};
       skills.forEach(s => {
         const cat = s.category || 'General';
@@ -410,7 +385,7 @@ function renderModernTemplate(data) {
             <h1 class="tpl-modern-name">${escapeHTML(p.fullName || 'Your Name')}</h1>
             <div class="tpl-modern-role">${escapeHTML(p.title || 'Professional Title')}</div>
             <p class="tpl-modern-short-bio">${escapeHTML(p.bio || '')}</p>
-            
+
             <div class="tpl-modern-contact-bar">
               ${p.email ? `<a href="mailto:${escapeHTML(p.email)}" class="tpl-modern-contact-chip"><i class="fa-solid fa-envelope"></i> ${escapeHTML(p.email)}</a>` : ''}
               ${p.phone ? `<a href="tel:${escapeHTML(p.phone)}" class="tpl-modern-contact-chip"><i class="fa-solid fa-phone"></i> ${escapeHTML(p.phone)}</a>` : ''}
@@ -434,10 +409,6 @@ function renderModernTemplate(data) {
   `;
 }
 
-/* ==========================================================================
-   TEMPLATE 3: CREATIVE
-   Bold visually animated layout, gradient titles, canvas backdrop, floating badges
-   ========================================================================== */
 function renderCreativeTemplate(data) {
   const p = data.profile || {};
   const social = data.social || {};
@@ -598,7 +569,7 @@ function renderCreativeTemplate(data) {
             <h1 class="tpl-creative-title">${escapeHTML(p.fullName || 'Your Name')}</h1>
             <div class="tpl-creative-subtitle">${escapeHTML(p.title || 'Creative Technologist')}</div>
             <p class="tpl-creative-bio-lead">${escapeHTML(p.bio || '')}</p>
-            
+
             <div class="tpl-creative-hero-links">
               ${p.email ? `<a href="mailto:${escapeHTML(p.email)}" class="tpl-creative-action-chip"><i class="fa-solid fa-paper-plane"></i> ${escapeHTML(p.email)}</a>` : ''}
               ${p.location ? `<span class="tpl-creative-action-chip"><i class="fa-solid fa-compass"></i> ${escapeHTML(p.location)}</span>` : ''}
@@ -627,13 +598,9 @@ function renderCreativeTemplate(data) {
   `;
 }
 
-/**
- * Helper to render social links icon bar
- * Only shows icons for links entered by user
- */
 function renderSocialIcons(social) {
   if (!social) return '';
-  
+
   const platforms = [
     { key: 'github', icon: 'fa-brands fa-github', label: 'GitHub' },
     { key: 'linkedin', icon: 'fa-brands fa-linkedin', label: 'LinkedIn' },

@@ -1,10 +1,4 @@
-/* ==========================================================================
-   PRINT / PDF EXPORT STYLES - PRINT.CSS
-   Dedicated Print Media Styles for Window.print() PDF Export
-   ========================================================================== */
-
 @media print {
-  /* Hide all SaaS app interface elements */
   .builder-header,
   .builder-sidebar,
   .builder-editor-panel,
@@ -18,7 +12,6 @@
     display: none !important;
   }
 
-  /* Reset Workspace Layout for Full Page Print */
   body, #builder-root, .builder-workspace, .builder-preview-panel, .preview-frame-wrapper {
     display: block !important;
     width: 100% !important;
@@ -40,14 +33,12 @@
     color: #111827 !important;
   }
 
-  /* Force high contrast text on print */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     text-shadow: none !important;
   }
 
-  /* Prevent page breaks inside cards & section headers */
   .tpl-minimal-section,
   .tpl-modern-card,
   .tpl-creative-block,
@@ -60,7 +51,6 @@
     break-inside: avoid;
   }
 
-  /* Hide video or background ambient canvas in print mode */
   canvas, .three-canvas, .tpl-creative-bg-glow {
     display: none !important;
   }

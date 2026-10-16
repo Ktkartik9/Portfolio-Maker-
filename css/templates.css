@@ -1,9 +1,3 @@
-/* ==========================================================================
-   TEMPLATES STYLES - TEMPLATES.CSS
-   Styles for Minimal, Modern, and Creative Portfolio Templates
-   ========================================================================== */
-
-/* Shared Social Icon Buttons */
 .social-icon-btn {
   width: 40px;
   height: 40px;
@@ -25,10 +19,6 @@
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
-/* ==========================================================================
-   TEMPLATE 1: MINIMAL
-   Clean light/neutral corporate theme, refined typography, subtle spacing
-   ========================================================================== */
 .tpl-minimal-wrapper {
   max-width: 900px;
   margin: 0 auto;
@@ -224,10 +214,6 @@
   opacity: 0.6;
 }
 
-/* ==========================================================================
-   TEMPLATE 2: MODERN
-   SaaS aesthetic, Glassmorphism, Gradient headers, interactive timeline dots
-   ========================================================================== */
 .tpl-modern-wrapper {
   max-width: 1000px;
   margin: 0 auto;
@@ -394,7 +380,6 @@
   border-radius: 3px;
 }
 
-/* Modern Timeline */
 .tpl-modern-timeline {
   position: relative;
   padding-left: 28px;
@@ -463,7 +448,6 @@
   line-height: 1.7;
 }
 
-/* Modern Projects Grid */
 .tpl-modern-projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -577,10 +561,6 @@
   opacity: 0.6;
 }
 
-/* ==========================================================================
-   TEMPLATE 3: CREATIVE
-   High-impact visual design, bold headings, background glow spheres
-   ========================================================================== */
 .tpl-creative-wrapper {
   position: relative;
   max-width: 1050px;
@@ -749,7 +729,6 @@
   text-align: right;
 }
 
-/* Creative Projects Grid */
 .tpl-creative-projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
